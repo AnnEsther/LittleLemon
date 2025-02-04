@@ -22,7 +22,7 @@ var items = [
 export default function Specials() {
     
     return (
-        <div className="specials">
+        <div id="menu" className="specials">
             <div className="specialsHead">
                 <h2>This weeks specials !</h2>
                 <button className="styledButton">Online Menu</button>

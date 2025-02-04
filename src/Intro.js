@@ -2,7 +2,7 @@ import introBg from './assets/introImg.jpg';
 
 export default function Intro() {
     return (
-        <div className="intro">
+        <div id="home" className="intro">
             <div className="introContent">
                 <h1>Little Lemon</h1>
                 <h2>Chicago</h2>

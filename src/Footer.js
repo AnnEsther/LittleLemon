@@ -14,15 +14,15 @@ export default function Footer() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Home</td>
-                                <td>Reservations</td>
+                                <td><a href="#home">Home</a></td>
+                                <td><a>Reservations</a></td>
                             </tr>
                             <tr>
-                                <td>About</td>
-                                <td>Order Online</td>
+                                <td><a href="#about">About</a></td>
+                                <td><a>Order Online</a></td>
                             </tr>
                             <tr>
-                                <td>Menu</td>
+                                <td><a href="#menu">Menu</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -35,10 +35,10 @@ export default function Footer() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Address</td>
+                                <td><a>Address</a></td>
                             </tr>
                             <tr>
-                                <td>Phone</td>
+                                <td><a>Phone</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -53,13 +53,13 @@ export default function Footer() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Facebook</td>
+                                <td><a>Facebook</a></td>
                             </tr>
                             <tr>
-                                <td>Instagram</td>
+                                <td><a>Instagram</a></td>
                             </tr>
                             <tr>
-                                <td>Youtube</td>
+                                <td><a>Youtube</a></td>
                             </tr>
                         </tbody>
                     </table>

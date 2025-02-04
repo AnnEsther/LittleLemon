@@ -55,6 +55,8 @@ nav {
   margin-left: auto;
   margin-right: 0;
   padding-right: 2%;
+  display: flex;
+  align-items: center;
 }
 
 .navLinks>ul {
@@ -239,6 +241,11 @@ main {
   padding: 0vh 1vw;
 }
 
+.itemLink:hover{
+  text-decoration: underline;
+  color: #495e57;
+}
+
 .material-symbols-outlined {
   margin: 0vh 0vw 0vh 0.5vw;
 }
@@ -292,13 +299,12 @@ main {
   display: flex;
   align-items: center;
   height: fit-content;
+  color: #F4CE14;
 }
 
-.customerRating>h3 {
-  margin: 0px;
-  padding: 0px;
+.customerName{
+  color: #EDEFEE;
 }
-
 .customerTestimonial {
   font-style: italic;
   font-weight: normal;
@@ -442,6 +448,8 @@ main {
     margin-left: 0;
     margin-right: 0;
     padding-right: 2%;
+    display: flex;
+    align-items: center;
   }
 
   .navLinks>ul {
@@ -506,4 +514,9 @@ p {
 
 .material-symbols-outlined {
   font-size: 1.5em;
+}
+
+td > a {
+  font-size: 1em;
+  font-weight: normal;
 }
