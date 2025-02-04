@@ -2,6 +2,14 @@ import MarioAdrian from './assets/Mario and Adrian b.jpg';
 import Adrian from './assets/restaurant chef B.jpg';
 
 export default function About() {
+    // useEffect(() => {
+    //     const updateImg = setInterval(() => {
+    //       setCount(prevCount => prevCount + 1);
+    //     }, 5000); // 1000 milliseconds (1 second)
+    
+    //     return () => clearInterval(updateImg); // Cleanup on unmount
+    //   }, []); 
+
     return (
         <div className="about">
             <h2>About</h2>
@@ -11,7 +19,6 @@ export default function About() {
                     <img className="aboutImgOne" src={Adrian}></img>
                     <img className="aboutImgTwo" src={MarioAdrian}></img>
                 </div>
-
             </div>
         </div>
     );

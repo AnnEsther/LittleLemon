@@ -4,9 +4,9 @@ export default function Intro() {
     return (
         <div className="intro">
             <div className="introContent">
-                <h1>Little lemon</h1>
+                <h1>Little Lemon</h1>
                 <h2>Chicago</h2>
-                <h6>A family owned Mediterranean Restaurant, prominent in the Chicago Food scene with a focus on Traditional recipes with modern experience.</h6>
+                <h6>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</h6>
                 <button className='styledButton'> Reserve a table</button>
                 </div>
             <div className="introImage">

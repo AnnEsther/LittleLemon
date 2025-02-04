@@ -151,7 +151,7 @@ main {
 .introImg {
   width: 28vw;
   margin-top: 5vh;
-  border-radius: 10%;
+  border-radius: 16px;
 }
 
 /*---------------------Specials---------------------*/
@@ -179,7 +179,7 @@ main {
 
 .specialsItems {
   width: 20vw;
-  border-radius: 10%;
+  border-radius: 16px;
   background-color: #EDEFEE;
   margin: 4vh 1vw;
   display: grid;
@@ -195,7 +195,7 @@ main {
 .specialsImg {
   grid-area: specialsImage;
   width: 100%;
-  border-radius: 10% 10% 0% 0%;
+  border-radius: 16px 16px 0% 0%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -255,6 +255,7 @@ main {
 
 .testimonialContent {
   display: flex;
+  margin: 2vh 0vw;
 }
 
 .testimonialItem {
@@ -262,7 +263,7 @@ main {
   background-color: #333333;
   padding: 1rem 1vw;
   margin: 0vh 1vw 0vh 0vh;
-  border-radius: 10%;
+  border-radius: 16px;
 }
 
 .testimonialHead {
@@ -349,29 +350,62 @@ main {
   width: 30%;
   height: auto;
   position: absolute;
-  border-radius: 10%;
+  border-radius: 16px;
 }
 
 .aboutImgOne{
-
+  animation-name: transalateImageOne;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
 }
 
 .aboutImgTwo{
-  display : flex;
+  /* display : flex; */
   margin: 5vh 0vw 0vh 5vw;
+  animation-name: transalateImageTwo;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
 }
 
+@keyframes transalateImageOne {
+  30% {margin: 0vh 0vw 0vh 0vw; z-index: 0;}
+  40% {margin: 0vh 0vw 0vh 0vw; z-index: 0;}
+  41% {margin: 0vh 0vw 0vh 0vw; z-index: 1;}
+  50% {margin: 5vh 0vw 0vh 5vw; z-index: 1;}
+
+  80% {margin: 5vh 0vw 0vh 5vw; z-index: 1;}
+  90% {margin: 5vh 0vw 0vh 40vw; z-index: 1;}
+  91% {margin: 5vh 0vw 0vh 40vw; z-index: 0;}
+  100% {margin: 0vh 0vw 0vh 0vw; z-index: 0;}
+}
+
+@keyframes transalateImageTwo {
+  30% {margin: 5vh 0vw 0vh 5vw; z-index: 1;}
+  40% {margin: 5vh 0vw 0vh 40vw; z-index: 1;}
+  41% {margin: 5vh 0vw 0vh 40vw; z-index: 0;}
+  50% {margin: 0vh 0vw 0vh 0vw; z-index: 0;}
+
+  80% {margin: 0vh 0vw 0vh 0vw; z-index: 0;}
+  90% {margin: 0vh 0vw 0vh 0vw; z-index: 0;}
+  91% {margin: 0vh 0vw 0vh 0vw; z-index: 1;}
+  100% {margin: 5vh 0vw 0vh 5vw; z-index: 1;}
+
+}
 
 /*---------------------Objects---------------------*/
 
 .styledButton {
   background-color: #f4ce14;
   border: none;
-  border-radius: 0.9vw;
+  border-radius: 16px;
   font-weight: bold;
-  /* font-size: 1rem; */
   padding: 0.56rem;
   height: fit-content;
+ 
+}
+
+.styledButton:hover {
+  box-shadow: inset 0px 0px 8px #bd9d03;
 }
 
 /*-----------------------------------------------------*/
@@ -400,6 +434,7 @@ main {
   .navLogo {
     grid-area: navLogo;
     padding-top: 1%;
+    align-content: center;
   }
 
   .navLinks {
