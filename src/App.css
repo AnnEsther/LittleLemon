@@ -754,3 +754,52 @@ td>a {
 
 }
 
+
+/* Booking Page */
+
+.bookingPage {
+  padding: 1vw 20vw;
+}
+
+.bookingPage > h3 {
+  text-align: center;
+}
+
+.bookingForm {
+  
+}
+
+.bookingMainDiv {
+  display: grid;
+  grid-template-rows: 20% 20% 20% 20%;
+  grid-template-columns: 40% 50%;
+  grid-template-areas:
+    "dateLabel dateInput"
+    "timeLabel timeInput"
+    "guestsLabel guestsInput"
+    "occasionLabel occasionInput";
+    /* "formSubmit formSubmit"; */
+  /* max-width: 30vw; */
+  gap: 20px 0px;
+  padding: 5vw;
+}
+
+.bookingMainDiv > label {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.bookingMainDiv + div {
+  display: flex;
+  justify-content: center;
+}
+
+.dateLabel { grid-area:dateLabel ;}
+.dateInput { grid-area:dateInput ;}
+.timeLabel { grid-area:timeLabel ;}
+.timeInput { grid-area:timeInput ;}
+.guestsLabel { grid-area:guestsLabel ;}
+.guestsInput { grid-area:guestsInput ;}
+.occasionLabel { grid-area:occasionLabel ;}
+.occasionInput { grid-area:occasionInput ;}
+.formSubmit { grid-area:formSubmit ;}
