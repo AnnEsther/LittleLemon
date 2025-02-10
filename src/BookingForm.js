@@ -2,7 +2,12 @@
 import React, { useState } from "react";
 
 
-export default function BookingForm() {
+export default function BookingForm(props) {
+    console.log(props.availableTimes);
+    const availableTimes = props.availableTimes;
+    const setAvailableTimes = props.setAvailableTimes;
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
     };
@@ -12,7 +17,6 @@ export default function BookingForm() {
         setDate(e.target.value)
     }
 
-    const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]);
     const [time, setTime] = useState(availableTimes[0]);
     const handleTimeChange = (e) => {
         setTime(e.target.value)
