@@ -40,18 +40,18 @@ export default function BookingForm(props) {
                 <h3>Reserve a Table</h3>
                 <form onSubmit={handleSubmit} className="bookingForm">
                     <div className="bookingMainDiv">
-                    <label for="res-date">Choose Date</label>
+                    <label htmlFor="res-date">Choose Date</label>
                     <input type="date" id="res-date" value={date} onChange={handleDateChange} />
 
-                    <label for="res-time">Choose Time</label>
+                    <label htmlFor="res-time">Choose Time</label>
                     <select id="res-time " value={time} onChange={handleTimeChange}>
-                        {availableTimes.map(availableTime => { return <option>{availableTime}</option> })}
+                        {availableTimes.map(availableTime => { return <option key={availableTime}>{availableTime}</option> })}
                     </select>
 
-                    <label for="guests">Number of Guests</label>
+                    <label htmlFor="guests">Number of Guests</label>
                     <input type="number" placeholder="1" min="1" max="10" id="guests" value={noGuests} onChange={handleGuestsChange} />
 
-                    <label for="occasion">Occasion</label>
+                    <label htmlFor="occasion">Occasion</label>
                     <select id="occasion" value={occasion} onChange={handleOccasionChange}>
                         <option>None</option>
                         <option>Birthday</option>
