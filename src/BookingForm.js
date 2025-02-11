@@ -3,21 +3,23 @@ import React, { useState } from "react";
 
 
 export default function BookingForm(props) {
-    console.log(props.availableTimes);
-    const availableTimes = props.availableTimes;
-    const setAvailableTimes = props.setAvailableTimes;
 
+    const availableTimes = props.availableTimeState.availableTimes;
+    const availableTimeDispatch = props.availableTimeDispatch;
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // availableTimeDispatch({ type: 'remove_time', time: time });
     };
 
     const [date, setDate] = useState("");
     const handleDateChange = (e) => {
         setDate(e.target.value)
+        //to change dates available times
+        availableTimeDispatch({ type: "UPDATE_TIMES", date: date });
     }
 
-    const [time, setTime] = useState(availableTimes[0]);
+    const [time, setTime] = useState("-");
     const handleTimeChange = (e) => {
         setTime(e.target.value)
     }
@@ -38,26 +40,26 @@ export default function BookingForm(props) {
                 <h3>Reserve a Table</h3>
                 <form onSubmit={handleSubmit} className="bookingForm">
                     <div className="bookingMainDiv">
-                    <label className="dateLabel" for="res-date">Choose date</label>
-                    <input className="dateInput" type="date" id="res-date" value={date} onChange={handleDateChange} />
+                    <label for="res-date">Choose Date</label>
+                    <input type="date" id="res-date" value={date} onChange={handleDateChange} />
 
-                    <label className="timeLabel" for="res-time">Choose time</label>
-                    <select className="timeInput" id="res-time " value={time} onChange={handleTimeChange}>
+                    <label for="res-time">Choose Time</label>
+                    <select id="res-time " value={time} onChange={handleTimeChange}>
                         {availableTimes.map(availableTime => { return <option>{availableTime}</option> })}
                     </select>
 
-                    <label className="guestsLabel" for="guests">Number of guests</label>
-                    <input className="guestsInput" type="number" placeholder="1" min="1" max="10" id="guests" value={noGuests} onChange={handleGuestsChange} />
+                    <label for="guests">Number of Guests</label>
+                    <input type="number" placeholder="1" min="1" max="10" id="guests" value={noGuests} onChange={handleGuestsChange} />
 
-                    <label className="occasionLabel" for="occasion">Occasion</label>
-                    <select className="occasionInput" id="occasion" value={occasion} onChange={handleOccasionChange}>
+                    <label for="occasion">Occasion</label>
+                    <select id="occasion" value={occasion} onChange={handleOccasionChange}>
                         <option>None</option>
                         <option>Birthday</option>
                         <option>Anniversary</option>
                     </select>
                     </div>
                     <div>
-                        <input className="formSubmit" type="submit" value="Make Your reservation" />
+                        <input className="formSubmit" type="submit" value="Make Your Reservation" />
                     </div>
                 </form>
             </div>
