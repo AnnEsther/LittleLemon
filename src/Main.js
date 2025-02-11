@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { Routes, Route } from "react-router-dom";
 import Intro from "./Intro";
 import Specials from "./Specials";
@@ -6,11 +6,43 @@ import Testimonial from "./Testimonial";
 import About from "./About";
 import BookingForm from "./BookingForm";
 
-
 export default function Main() {
-   
-     // will create the initial state for the availableTimes. 
-    function InitializeTimes () {
+    const apiScript = "https://cdn.jsdelivr.net/gh/courseraap/capstone@main/api.js";
+
+    useEffect(() => {
+        const existingScript = document.getElementById(apiScript);
+
+        if (existingScript) {
+            return;
+        }
+        const script = document.createElement('script');
+        script.src = apiScript;
+        script.id = apiScript;
+        script.async = false;
+        script.onload = () => {
+            // Optional: Handle script load event
+            if (!document.getElementById(apiScript)) {
+                document.head.appendChild(script);
+            }
+
+        };
+        script.onerror = () => {
+            // Optional: Handle script load error
+            console.error('Error loading script.');
+        };
+
+
+        return () => {
+            const scriptToRemove = document.getElementById(apiScript);
+            if (scriptToRemove) {
+                document.head.removeChild(scriptToRemove);
+            }
+        };
+    }, [apiScript]); // Re-run if scriptUrl changes
+
+    // will create the initial state for the availableTimes. 
+    function InitializeTimes(date) {
+        // const times = fetchAPI(date);
         return { availableTimes: ["-", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] };
     }
 
@@ -20,7 +52,8 @@ export default function Main() {
         return state;
     }
 
-    const [availableTimeState, availableTimeDispatch] = useReducer(UpdateTimes , InitializeTimes() );
+    const today = new Date();
+    const [availableTimeState, availableTimeDispatch] = useReducer(UpdateTimes, InitializeTimes(today));
 
     return (
         <main>
@@ -35,11 +68,11 @@ export default function Main() {
 function HomePage() {
     return (
         <>
-        <div className="HomePage">
-            <Intro />
-            <Specials />
-            <Testimonial />
-            <About />
+            <div className="HomePage">
+                <Intro />
+                <Specials />
+                <Testimonial />
+                <About />
             </div>
         </>
     );
