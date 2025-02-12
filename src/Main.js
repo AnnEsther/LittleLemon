@@ -1,65 +1,88 @@
-import React, { useEffect, useReducer } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect, useReducer, useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Intro from "./Intro";
 import Specials from "./Specials";
 import Testimonial from "./Testimonial";
 import About from "./About";
 import BookingForm from "./BookingForm";
+import ConfirmedBooking from "./ConfirmedBooking.js"
+// import timeSlotsForDate from './data/TimesForDates.json';
+
+
 
 export default function Main() {
-    const apiScript = "https://cdn.jsdelivr.net/gh/courseraap/capstone@main/api.js";
 
-    useEffect(() => {
-        const existingScript = document.getElementById(apiScript);
+    var [timeSlotsForDate, setTimeSlotsForDate] = useState({});
 
-        if (existingScript) {
-            return;
+    const [formData, setFormData] = useState({
+        "date" : new Date(),
+        "dateString" : new Date().toISOString().slice(0, 10),
+        "time": "17:00",
+        "noGuests": "1",
+        "occasion": "None"
+    });
+
+    function isBookedTime(time) {
+        return time !== formData.time;
+    }
+
+    const navigate = useNavigate();
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        const success = window.submitAPI(formData);
+
+        if (success) {
+            var selectedDate = formData.date.toISOString().slice(0, 10);
+            let filtered = timeSlotsForDate[selectedDate].filter(isBookedTime);
+            setTimeSlotsForDate(timeSlotsForDate => ({
+                ...timeSlotsForDate, // Create a shallow copy of the previous object
+                [selectedDate]: filtered, // Update the desired property
+              }));
+            availableTimeDispatch(formData.date);
+
+            navigate("/booking-confirmed");
+        } else {
+            alert("Booking submission failed. Please try again.");
         }
-        const script = document.createElement('script');
-        script.src = apiScript;
-        script.id = apiScript;
-        script.async = false;
-        script.onload = () => {
-            // Optional: Handle script load event
-            if (!document.getElementById(apiScript)) {
-                document.head.appendChild(script);
-            }
-
-        };
-        script.onerror = () => {
-            // Optional: Handle script load error
-            console.error('Error loading script.');
-        };
-
-
-        return () => {
-            const scriptToRemove = document.getElementById(apiScript);
-            if (scriptToRemove) {
-                document.head.removeChild(scriptToRemove);
-            }
-        };
-    }, [apiScript]); // Re-run if scriptUrl changes
+    };
 
     // will create the initial state for the availableTimes. 
     function InitializeTimes(date) {
-        // const times = fetchAPI(date);
-        return { availableTimes: ["-", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] };
+        var newDate = date.toISOString().slice(0, 10);
+        var availableTimes;
+        if(!timeSlotsForDate.hasOwnProperty(newDate)){
+            availableTimes = window.fetchAPI(date);
+            setTimeSlotsForDate(timeSlotsForDate => ({
+                ...timeSlotsForDate, // Create a shallow copy of the previous object
+                [newDate]:  availableTimes, // Update the desired property
+              }));
+        }
+        else{
+            availableTimes = timeSlotsForDate[newDate];
+        }
+        var options = availableTimes.map(availableTime => { return <option key={availableTime}>{availableTime}</option> });
+        return options;
     }
 
     //will change the availableTimes based on the selected date
     function UpdateTimes(state, action) {
         // For now, return the same times regardless of date selection
-        return state;
+        return InitializeTimes(action);
     }
 
     const today = new Date();
     const [availableTimeState, availableTimeDispatch] = useReducer(UpdateTimes, InitializeTimes(today));
 
+    // useEffect(()=>{console.log(timeSlotsForDate)},[timeSlotsForDate]);
+    // useEffect(()=>{console.log(availableTimeState)},[availableTimeState]);
+
     return (
         <main>
             <Routes>
                 <Route path="/" element={<HomePage />}></Route>
-                <Route path="/booking" element={<BookingPage availableTimeState={availableTimeState} availableTimeDispatch={availableTimeDispatch} />}></Route>
+                <Route path="/booking-confirmed" element={<ConfirmedBooking formData={formData}/>}></Route>
+                <Route path="/booking" element={<BookingPage formData={formData} setFormData={setFormData} submitForm={submitForm} availableTimeState={availableTimeState} availableTimeDispatch={availableTimeDispatch} />}></Route>
             </Routes>
         </main>
     );
@@ -82,7 +105,7 @@ function BookingPage(props) {
 
     return (
         <>
-            <BookingForm availableTimeState={props.availableTimeState} availableTimeDispatch={props.availableTimeDispatch}></BookingForm>
+            <BookingForm formData={props.formData} setFormData={props.setFormData} submitForm={props.submitForm} availableTimeState={props.availableTimeState} availableTimeDispatch={props.availableTimeDispatch}></BookingForm>
         </>
     );
 }

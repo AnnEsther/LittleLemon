@@ -1,63 +1,84 @@
 
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
-export default function BookingForm(props) {
 
-    const availableTimes = props.availableTimeState.availableTimes;
-    const availableTimeDispatch = props.availableTimeDispatch;
+const BookingForm = React.memo(( props ) =>  {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // availableTimeDispatch({ type: 'remove_time', time: time });
-    };
+    const submitForm = props.submitForm;
+    const setFormData = props.setFormData;
+    const formData = props.formData;
+    let data = formData;
 
-    const [date, setDate] = useState("");
+    useEffect(()=>{console.log("Update Caught")},[props.availableTimeState]);
+
     const handleDateChange = (e) => {
-        setDate(e.target.value)
-        //to change dates available times
-        availableTimeDispatch({ type: "UPDATE_TIMES", date: date });
+        var selectedDate = new Date(e.target.value);
+        setFormData(formData => ({
+            ...formData,
+            ["date"]: selectedDate,
+            ["dateString"]: e.target.value,
+          }));
+          data = formData;
+          props.availableTimeDispatch(selectedDate);
     }
 
-    const [time, setTime] = useState("-");
     const handleTimeChange = (e) => {
-        setTime(e.target.value)
+        setFormData(formData => ({
+            ...formData,
+            ["time"]: e.target.value
+          }));
+          data = formData;
+
     }
 
-    const [noGuests, setNoGuests] = useState("1");
     const handleGuestsChange = (e) => {
-        setNoGuests(e.target.value)
+        setFormData(formData => ({
+            ...formData,
+            ["noGuests"]: e.target.value
+          }));
+          data = formData;
+
     }
 
-    const [occasion, setOccasions] = useState("None");
     const handleOccasionChange = (e) => {
-        setOccasions(e.target.value)
+        setFormData(formData => ({
+            ...formData,
+            ["occasion"]: e.target.value
+          }));
+          data = formData;
+
     }
+
+    useEffect(()=>{console.log(formData)},[formData]);
 
     return (
         <>
             <div className="bookingPage">
                 <h3>Reserve a Table</h3>
-                <form onSubmit={handleSubmit} className="bookingForm">
+                <form onSubmit={submitForm} className="bookingForm">
                     <div className="bookingMainDiv">
+
                     <label htmlFor="res-date">Choose Date</label>
-                    <input type="date" id="res-date" value={date} onChange={handleDateChange} />
+                    <input type="date" id="res-date" value={data.dateString} onChange={handleDateChange} />
 
                     <label htmlFor="res-time">Choose Time</label>
-                    <select id="res-time " value={time} onChange={handleTimeChange}>
-                        {availableTimes.map(availableTime => { return <option key={availableTime}>{availableTime}</option> })}
+                    <select id="res-time" value={data.time} onChange={handleTimeChange}>
+                        {props.availableTimeState}
                     </select>
 
                     <label htmlFor="guests">Number of Guests</label>
-                    <input type="number" placeholder="1" min="1" max="10" id="guests" value={noGuests} onChange={handleGuestsChange} />
+                    <input type="number" placeholder="1" min="1" max="10" id="guests" value={data.noGuests} onChange={handleGuestsChange} />
 
                     <label htmlFor="occasion">Occasion</label>
-                    <select id="occasion" value={occasion} onChange={handleOccasionChange}>
+                    <select id="occasion" value={data.occasion} onChange={handleOccasionChange}>
                         <option>None</option>
                         <option>Birthday</option>
                         <option>Anniversary</option>
                     </select>
                     </div>
+
                     <div>
                         <input className="formSubmit" type="submit" value="Make Your Reservation" />
                     </div>
@@ -65,4 +86,6 @@ export default function BookingForm(props) {
             </div>
         </>
     );
-}
+})
+
+export default BookingForm;
