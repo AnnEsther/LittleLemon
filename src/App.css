@@ -803,3 +803,26 @@ td>a {
 .occasionLabel { grid-area:occasionLabel ;}
 .occasionInput { grid-area:occasionInput ;}
 .formSubmit { grid-area:formSubmit ;}
+
+
+.confirmation {
+  /* background-color: #495E57; */
+  padding: 1vw 0vw;
+}
+
+.confirmation > div {
+  display: flex;
+  flex-direction: column;
+  border: white;
+  border-radius: 1vw;
+  border-style: inset;
+  padding: 1vw 10vw;
+  margin: 1vw 10vw;
+  justify-content: center;
+  align-items: center;
+  border-color: #495E57;
+}
+
+.confirmation > div > table > tbody > tr > td {
+  font-size: 1.5em;
+}
