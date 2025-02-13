@@ -6,7 +6,6 @@ import Testimonial from "./Testimonial";
 import About from "./About";
 import BookingForm from "./BookingForm";
 import ConfirmedBooking from "./ConfirmedBooking.js"
-// import timeSlotsForDate from './data/TimesForDates.json';
 
 
 
