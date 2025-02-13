@@ -11,7 +11,7 @@ const BookingForm = React.memo(( props ) =>  {
     const formData = props.formData;
     let data = formData;
 
-    useEffect(()=>{console.log("Update Caught")},[props.availableTimeState]);
+    // useEffect(()=>{console.log("Update Caught")},[props.availableTimeState]);
 
     const handleDateChange = (e) => {
         var selectedDate = new Date(e.target.value);
@@ -51,7 +51,7 @@ const BookingForm = React.memo(( props ) =>  {
 
     }
 
-    useEffect(()=>{console.log(formData)},[formData]);
+    // useEffect(()=>{console.log(formData)},[formData]);
 
     return (
         <>
