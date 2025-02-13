@@ -11,11 +11,20 @@ import ConfirmedBooking from "./ConfirmedBooking.js"
 
 export default function Main() {
 
-    var [timeSlotsForDate, setTimeSlotsForDate] = useState({});
+    //Loading localStorage data 
+    let localStorageData = {};
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        localStorageData[key] = JSON.parse(value);
+    }
+    // console.log("Loading : ", localStorage)
+
+    var [timeSlotsForDate, setTimeSlotsForDate] = useState(localStorageData);
 
     const [formData, setFormData] = useState({
-        "date" : new Date(),
-        "dateString" : new Date().toISOString().slice(0, 10),
+        "date": new Date(),
+        "dateString": new Date().toISOString().slice(0, 10),
         "time": "17:00",
         "noGuests": "1",
         "occasion": "None"
@@ -37,8 +46,11 @@ export default function Main() {
             setTimeSlotsForDate(timeSlotsForDate => ({
                 ...timeSlotsForDate, // Create a shallow copy of the previous object
                 [selectedDate]: filtered, // Update the desired property
-              }));
+            }));
             availableTimeDispatch(formData.date);
+
+            //update the local storage by removing the already selected time
+            localStorage.setItem(selectedDate, JSON.stringify(filtered));
 
             navigate("/booking-confirmed");
         } else {
@@ -50,14 +62,17 @@ export default function Main() {
     function InitializeTimes(date) {
         var newDate = date.toISOString().slice(0, 10);
         var availableTimes;
-        if(!timeSlotsForDate.hasOwnProperty(newDate)){
+        if (!timeSlotsForDate.hasOwnProperty(newDate)) {
             availableTimes = window.fetchAPI(date);
             setTimeSlotsForDate(timeSlotsForDate => ({
                 ...timeSlotsForDate, // Create a shallow copy of the previous object
-                [newDate]:  availableTimes, // Update the desired property
-              }));
+                [newDate]: availableTimes, // Update the desired property
+            }));
+
+            //new date is added to local storage with the available times
+            localStorage.setItem(newDate, JSON.stringify(availableTimes));
         }
-        else{
+        else {
             availableTimes = timeSlotsForDate[newDate];
         }
         var options = availableTimes.map(availableTime => { return <option key={availableTime}>{availableTime}</option> });
@@ -80,7 +95,7 @@ export default function Main() {
         <main>
             <Routes>
                 <Route path="/" element={<HomePage />}></Route>
-                <Route path="/booking-confirmed" element={<ConfirmedBooking formData={formData}/>}></Route>
+                <Route path="/booking-confirmed" element={<ConfirmedBooking formData={formData} />}></Route>
                 <Route path="/booking" element={<BookingPage formData={formData} setFormData={setFormData} submitForm={submitForm} availableTimeState={availableTimeState} availableTimeDispatch={availableTimeDispatch} />}></Route>
             </Routes>
         </main>
