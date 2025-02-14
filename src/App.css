@@ -32,6 +32,8 @@ a {
   color: #333333;
 }
 
+
+
 main {
   grid-area: main;
 }
@@ -78,6 +80,10 @@ nav {
   margin: 10px;
 }
 
+a:hover {
+  color : #5a796f;
+  text-decoration: #5a796f overline double;
+}
 /*---------------------Footer---------------------*/
 footer {
   display: block;
@@ -498,7 +504,7 @@ footer {
 }
 
 .styledButton:hover {
-  box-shadow: inset 0px 0px 8px #bd9d03;
+  box-shadow: inset 0px 0px 8px #796501;
 }
 
 /* ---------------------Font Sizing--------------------- */

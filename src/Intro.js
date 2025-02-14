@@ -14,7 +14,7 @@ export default function Intro() {
                 <h6 className="introPara">We are a family owned Mediterranean restaurant, 
                     focused on traditional recipes served with a modern twist.</h6>
                     <div className="introButtonDiv">
-                        <button className='styledButton' onClick={()=>{navigate("/booking");}}> Reserve a table</button>
+                        <button className='styledButton' onClick={()=>{navigate("/booking");}} aria-label="Click to Reserve a table"> Reserve a table</button>
                     </div>
                 </div>
             <div className="introImage">

@@ -25,7 +25,7 @@ export default function Specials() {
         <div id="menu" className="specials">
             <div className="specialsHead">
                 <h2>This weeks specials !</h2>
-                <button className="styledButton">Online Menu</button>
+                <button className="styledButton" aria-label="Click for Online Menu">Online Menu</button>
             </div>
             <div className="specialsContent">
                 {items.map((item) => <SpecialsItems key={item.name} data={item} />)}

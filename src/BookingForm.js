@@ -10,6 +10,7 @@ const BookingForm = React.memo(( props ) =>  {
     const setFormData = props.setFormData;
     const formData = props.formData;
     let data = formData;
+    let today = new Date().toISOString().slice(0, 10);
 
     // useEffect(()=>{console.log("Update Caught")},[props.availableTimeState]);
 
@@ -61,7 +62,7 @@ const BookingForm = React.memo(( props ) =>  {
                     <div className="bookingMainDiv">
 
                     <label htmlFor="res-date">Choose Date</label>
-                    <input type="date" id="res-date" value={data.dateString} onChange={handleDateChange} />
+                    <input type="date" id="res-date" min={today} value={data.dateString} onChange={handleDateChange} />
 
                     <label htmlFor="res-time">Choose Time</label>
                     <select id="res-time" value={data.time} onChange={handleTimeChange}>
@@ -80,7 +81,7 @@ const BookingForm = React.memo(( props ) =>  {
                     </div>
 
                     <div>
-                        <input className="formSubmit" type="submit" value="Make Your Reservation" />
+                        <input className="formSubmit styledButton" type="submit" value="Make Your Reservation" aria-label="Make Reservation"/>
                     </div>
                 </form>
             </div>
