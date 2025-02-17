@@ -1,5 +1,5 @@
-import logo from './assets/Logo.svg';
-import { useNavigate } from "react-router-dom";
+import logo from '../assets/Logo.svg';
+import { useNavigate } from "react-router";
 
 
 export default function Nav() {

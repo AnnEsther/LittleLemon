@@ -1,6 +1,6 @@
-import Reese from './assets/Reese.jpg';
-import Malcom from './assets/malcom.jpg';
-import Dewie from './assets/Dewie.jpg';
+import Reese from '../assets/Reese.jpg';
+import Malcom from '../assets/malcom.jpg';
+import Dewie from '../assets/Dewie.jpg';
 
 
 var imageSrcList = {
@@ -48,14 +48,14 @@ function RatingVisual(params){
     if(hasHalfStar){
         return (
             <>
-                <div className='material-symbols-outlined' style={{"font-variation-settings" : "'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48"}} key={params.data.name+"half-star"} >star_half</div>
+                <div className='material-symbols-outlined' style={{"fontVariationSettings" : "'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48"}} key={params.data.name+"half-star"} >star_half</div>
             </>
         );
     }
     else{
         return (
             <>
-            <div className='material-symbols-outlined' style={{"font-variation-settings" : "'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48"}} key={params.data.name+"star"} >star</div>
+            <div className='material-symbols-outlined' style={{"fontVariationSettings" : "'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48"}} key={params.data.name+"star"} >star</div>
             </>
         );
     }
@@ -75,9 +75,9 @@ function TestimonialItem(params) {
                 <RatingVisual data={params.data}/>
             </div>
             </div>
-            <h6 className="customerTestimonial">
-                "{params.data.testimony}"
-            </h6>
+            <h5 className="customerTestimonial">
+            &quot;{params.data.testimony}&quot;
+            </h5>
         </div>
     );
 }

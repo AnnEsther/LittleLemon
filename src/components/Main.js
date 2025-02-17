@@ -1,27 +1,28 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import Intro from "./Intro";
-import Specials from "./Specials";
-import Testimonial from "./Testimonial";
-import About from "./About";
-import BookingForm from "./BookingForm";
+import { Routes, Route, useNavigate } from "react-router";
+
+
+
+import HomePage from "./HomePage.js"
 import ConfirmedBooking from "./ConfirmedBooking.js"
+import BookingPage from "./BookingPage.js";
 
 
 
 export default function Main() {
 
-    //Loading localStorage data 
+    const navigate = useNavigate();
+
+    //Loading data from localStorage to state variable 
     let localStorageData = {};
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         const value = localStorage.getItem(key);
         localStorageData[key] = JSON.parse(value);
     }
-    // console.log("Loading : ", localStorage)
-
     var [timeSlotsForDate, setTimeSlotsForDate] = useState(localStorageData);
 
+    //Creating form data state variable to be controlled from main
     const [formData, setFormData] = useState({
         "date": new Date(),
         "dateString": new Date().toISOString().slice(0, 10),
@@ -30,19 +31,16 @@ export default function Main() {
         "occasion": "None"
     });
 
-    function isBookedTime(time) {
-        return time !== formData.time;
-    }
 
-    const navigate = useNavigate();
-
+    //On submit form from Booking form
     const submitForm = (e) => {
-        e.preventDefault();
+        e.preventDefault(); //prevent default functionality of reloading the page
+
         const success = window.submitAPI(formData);
 
         if (success) {
             var selectedDate = formData.date.toISOString().slice(0, 10);
-            let filtered = timeSlotsForDate[selectedDate].filter(isBookedTime);
+            let filtered = timeSlotsForDate[selectedDate].filter((time) => {return time !== formData.time;});
             setTimeSlotsForDate(timeSlotsForDate => ({
                 ...timeSlotsForDate, // Create a shallow copy of the previous object
                 [selectedDate]: filtered, // Update the desired property
@@ -63,7 +61,14 @@ export default function Main() {
         var newDate = date.toISOString().slice(0, 10);
         var availableTimes;
         if (!timeSlotsForDate.hasOwnProperty(newDate)) {
-            availableTimes = window.fetchAPI(date);
+            
+            try {
+                availableTimes = fetchAPI(date);
+            } catch (err) {
+                console.log(err);
+                return;
+            }
+            
             setTimeSlotsForDate(timeSlotsForDate => ({
                 ...timeSlotsForDate, // Create a shallow copy of the previous object
                 [newDate]: availableTimes, // Update the desired property
@@ -88,8 +93,6 @@ export default function Main() {
     const today = new Date();
     const [availableTimeState, availableTimeDispatch] = useReducer(UpdateTimes, InitializeTimes(today));
 
-    // useEffect(()=>{console.log(timeSlotsForDate)},[timeSlotsForDate]);
-    // useEffect(()=>{console.log(availableTimeState)},[availableTimeState]);
 
     return (
         <main>
@@ -102,24 +105,4 @@ export default function Main() {
     );
 }
 
-function HomePage() {
-    return (
-        <>
-            <div className="HomePage">
-                <Intro />
-                <Specials />
-                <Testimonial />
-                <About />
-            </div>
-        </>
-    );
-}
 
-function BookingPage(props) {
-
-    return (
-        <>
-            <BookingForm formData={props.formData} setFormData={props.setFormData} submitForm={props.submitForm} availableTimeState={props.availableTimeState} availableTimeDispatch={props.availableTimeDispatch}></BookingForm>
-        </>
-    );
-}
