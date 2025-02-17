@@ -203,7 +203,7 @@ footer {
   background-color: #EDEFEE;
   margin: 4vh 1vw;
   display: grid;
-  grid-template-rows: 45% 15% 30% 10%;
+  grid-template-rows: 45% 15% 20% 20%;
   grid-template-areas:
     "specialsImage"
     "specialsHead"
@@ -361,7 +361,7 @@ footer {
   grid-template-areas: "aboutContent aboutImgs";
 }
 
-.aboutContent>h6 {
+.aboutContent>h5 {
   grid-area: aboutContent;
   padding-top: 2.5vh;
   font-weight: normal;
@@ -373,8 +373,8 @@ footer {
 }
 
 .aboutImageDiv>img {
-  width: 30vw;
-  height: auto;
+  height: 30vh;
+  width: auto;
   position: absolute;
   border-radius: 16px;
 }
@@ -420,12 +420,12 @@ footer {
   }
 
   90% {
-    margin: 15vh 0vw 0vh 5vw;
+    margin: 32vh 0vw 0vh 5vw;
     z-index: 1;
   }
 
   91% {
-    margin: 15vh 0vw 0vh 5vw;
+    margin: 32vh 0vw 0vh 5vw;
     z-index: 0;
   }
 
@@ -442,12 +442,12 @@ footer {
   }
 
   40% {
-    margin: 15vh 0vw 0vh 5vw;
+    margin: 32vh 0vw 0vh 5vw;
     z-index: 1;
   }
 
   41% {
-    margin: 15vh 0vw 0vh 5vw;
+    margin: 32vh 0vw 0vh 5vw;
     z-index: 0;
   }
 
@@ -514,8 +514,8 @@ h1 { font-size: 5.5em; }
 h2 { font-size: 5em; }
 h3 { font-size: 4.5em; }
 h4 { font-size: 4em; }
-h5 { font-size: 2.5em; }
-h6, td, a { font-size: 2em; }
+h5 { font-size: 2em; }
+h6, td, a { font-size: 1em; }
 p { font-size: 1.0em; }
 .material-symbols-outlined { font-size: 1em; }
 
@@ -734,6 +734,8 @@ td>a {
   "aboutContent" 
   "aboutImgs   ";
   }
+
+ 
 
   .aboutImageDiv {
     width: 80vw;
