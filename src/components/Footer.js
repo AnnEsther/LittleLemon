@@ -18,7 +18,7 @@ export default function Footer() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td><a href="#home">Home</a></td>
+                                <td><a onClick={()=>{navigate("/LittleLemon")}}>Home</a></td>
                                 <td><a onClick={()=>{navigate("/booking")}}>Reservations</a></td>
                             </tr>
                             <tr>

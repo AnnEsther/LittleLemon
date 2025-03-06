@@ -99,7 +99,7 @@ export default function Main() {
     return (
         <main>
             <Routes>
-                <Route path="/" element={<HomePage />}></Route>
+                <Route path="/LittleLemon" element={<HomePage />}></Route>
                 <Route path="/booking-confirmed" element={<ConfirmedBooking formData={formData} />}></Route>
                 <Route path="/booking" element={<BookingPage 
                     formData={formData} 

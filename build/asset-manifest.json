@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.920e4e8c.css",
-    "main.js": "/static/js/main.9536f036.js",
-    "static/js/488.66a58736.chunk.js": "/static/js/488.66a58736.chunk.js",
-    "static/media/Mario and Adrian b.jpg": "/static/media/Mario and Adrian b.6ba0e06bfa9c1ea75109.jpg",
-    "static/media/restaurant chef B.jpg": "/static/media/restaurant chef B.4b4c2d26b514db32e8fc.jpg",
-    "static/media/greekSalad.jpg": "/static/media/greekSalad.5559edf9684caf79e84a.jpg",
-    "static/media/introImg.jpg": "/static/media/introImg.7a626ada526d3fbb0df7.jpg",
-    "static/media/Reese.jpg": "/static/media/Reese.35d208e87577c4adc3af.jpg",
-    "static/media/Logo_big.png": "/static/media/Logo_big.2c859235d6c57bb54176.png",
-    "static/media/Dewie.jpg": "/static/media/Dewie.911ba10805bfda727742.jpg",
-    "static/media/Logo.svg": "/static/media/Logo.2c379c7ea7eb07402bfc7700915316de.svg",
-    "static/media/malcom.jpg": "/static/media/malcom.f98f0134fcd94a098173.jpg",
-    "static/media/Bruchetta.jpg": "/static/media/Bruchetta.e663226a2cf578b4d6ea.jpg",
-    "index.html": "/index.html",
-    "main.920e4e8c.css.map": "/static/css/main.920e4e8c.css.map",
-    "main.9536f036.js.map": "/static/js/main.9536f036.js.map",
-    "488.66a58736.chunk.js.map": "/static/js/488.66a58736.chunk.js.map"
+    "main.css": "/LittleLemon/static/css/main.920e4e8c.css",
+    "main.js": "/LittleLemon/static/js/main.d33c3060.js",
+    "static/js/488.66a58736.chunk.js": "/LittleLemon/static/js/488.66a58736.chunk.js",
+    "static/media/Mario and Adrian b.jpg": "/LittleLemon/static/media/Mario and Adrian b.6ba0e06bfa9c1ea75109.jpg",
+    "static/media/restaurant chef B.jpg": "/LittleLemon/static/media/restaurant chef B.4b4c2d26b514db32e8fc.jpg",
+    "static/media/greekSalad.jpg": "/LittleLemon/static/media/greekSalad.5559edf9684caf79e84a.jpg",
+    "static/media/introImg.jpg": "/LittleLemon/static/media/introImg.7a626ada526d3fbb0df7.jpg",
+    "static/media/Reese.jpg": "/LittleLemon/static/media/Reese.35d208e87577c4adc3af.jpg",
+    "static/media/Logo_big.png": "/LittleLemon/static/media/Logo_big.2c859235d6c57bb54176.png",
+    "static/media/Dewie.jpg": "/LittleLemon/static/media/Dewie.911ba10805bfda727742.jpg",
+    "static/media/Logo.svg": "/LittleLemon/static/media/Logo.2c379c7ea7eb07402bfc7700915316de.svg",
+    "static/media/malcom.jpg": "/LittleLemon/static/media/malcom.f98f0134fcd94a098173.jpg",
+    "static/media/Bruchetta.jpg": "/LittleLemon/static/media/Bruchetta.e663226a2cf578b4d6ea.jpg",
+    "index.html": "/LittleLemon/index.html",
+    "main.920e4e8c.css.map": "/LittleLemon/static/css/main.920e4e8c.css.map",
+    "main.d33c3060.js.map": "/LittleLemon/static/js/main.d33c3060.js.map",
+    "488.66a58736.chunk.js.map": "/LittleLemon/static/js/488.66a58736.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.920e4e8c.css",
-    "static/js/main.9536f036.js"
+    "static/js/main.d33c3060.js"
   ]
 }

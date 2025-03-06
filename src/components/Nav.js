@@ -11,7 +11,7 @@ export default function Nav() {
             </div>
             <div className='navLinks'>
                 <ul>
-                    <li><a onClick={()=>{navigate("/")}} aria-label="Navigate to home page">Home</a></li>
+                    <li><a onClick={()=>{navigate("/LittleLemon")}} aria-label="Navigate to home page">Home</a></li>
                     <li><a href='#about' aria-label="Navigate to about section">About</a></li>
                     <li><a href='#menu' aria-label="Navigate to online menu">Menu</a></li>
                     <li><a onClick={()=>{navigate("/booking")}} aria-label="Navigate to reserve a table">Reservation</a></li>
