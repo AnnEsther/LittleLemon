@@ -1,6 +1,8 @@
 import GreekSalad from '../assets/greekSalad.jpg';
 import Bruchetta from '../assets/Bruchetta.jpg';
 import lemonDessert from '../assets/lemonDessert.jpg';
+import { useNavigate } from "react-router";
+
 
 var imageSrcList = {
     "Bruchetta": Bruchetta,
@@ -10,6 +12,7 @@ var imageSrcList = {
 
 export default function SpecialsItems(params) {
     const imgSrc = imageSrcList[params.data.name];
+    const navigate = useNavigate();
     return (
         <>
             <div className="specialsItems">
@@ -22,7 +25,7 @@ export default function SpecialsItems(params) {
                     
                     <p className="itemDescription">{params.data.description}</p>
                 </div>
-                <h5 className="itemLink">Order delivery
+                <h5 className="itemLink" onClick={()=>{navigate("/construction")}}>Order delivery
                     <span className="material-symbols-outlined">directions_bike</span>
                 </h5>
             </div>

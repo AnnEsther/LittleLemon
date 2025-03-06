@@ -15,8 +15,8 @@ export default function Nav() {
                     <li><a href='#about' aria-label="Navigate to about section">About</a></li>
                     <li><a href='#menu' aria-label="Navigate to online menu">Menu</a></li>
                     <li><a onClick={()=>{navigate("/booking")}} aria-label="Navigate to reserve a table">Reservation</a></li>
-                    <li><a href='#'  aria-label="Navigate to order online">Order Online</a></li>
-                    <li><a href='#'  aria-label="Navigate to login">Login</a></li>
+                    <li><a onClick={()=>{navigate("/construction")}}  aria-label="Navigate to order online">Order Online</a></li>
+                    <li><a onClick={()=>{navigate("/construction")}}  aria-label="Navigate to login">Login</a></li>
                 </ul>
             </div>
         </nav>

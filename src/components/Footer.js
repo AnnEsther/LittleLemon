@@ -1,6 +1,10 @@
 import logo_big from '../assets/Logo_big.png';
+import { useNavigate } from "react-router";
+
 
 export default function Footer() {
+    const navigate = useNavigate();
+
     return (
         <footer>
             <div className='footerlogoDiv'>
@@ -15,14 +19,14 @@ export default function Footer() {
                         <tbody>
                             <tr>
                                 <td><a href="#home">Home</a></td>
-                                <td><a>Reservations</a></td>
+                                <td><a onClick={()=>{navigate("/booking")}}>Reservations</a></td>
                             </tr>
                             <tr>
                                 <td><a href="#about">About</a></td>
-                                <td><a>Order Online</a></td>
+                                <td><a onClick={()=>{navigate("/construction")}}>Order Online</a></td>
                             </tr>
                             <tr>
-                                <td><a href="#menu">Menu</a></td>
+                                <td><a href="#menu" >Menu</a></td>
                             </tr>
                         </tbody>
                     </table>

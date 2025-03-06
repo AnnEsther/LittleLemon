@@ -70,7 +70,7 @@ const BookingForm = React.memo(( props ) =>  {
                     <label htmlFor="guests">Number of Guests</label>
                     <input type="number" placeholder="1" min="1" max="10" id="guests" value={data.noGuests} onChange={handleGuestsChange} />
 
-                    <label htmlFor="occasion">Occasion</label>
+                    <label htmlFor="occasion">Choose Occasion</label>
                     <select id="occasion" value={data.occasion} onChange={handleOccasionChange}>
                         <option>None</option>
                         <option>Birthday</option>

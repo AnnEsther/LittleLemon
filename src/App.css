@@ -834,3 +834,14 @@ td>a {
 .confirmation > div > table > tbody > tr > td {
   font-size: 1.5em;
 }
+
+.underConstruction{
+  display: flex;
+  padding: 10vh 0vw;
+  background-color: #495e5769;
+  border-radius: 16px;
+  border: 6px;
+  margin: 10vh 10vw;
+  justify-content: center;
+  align-items: center;
+}

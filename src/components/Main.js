@@ -36,6 +36,7 @@ export default function Main() {
     const submitForm = (e) => {
         e.preventDefault(); //prevent default functionality of reloading the page
 
+        // eslint-disable-next-line no-undef
         const success = window.submitAPI(formData);
 
         if (success) {
@@ -63,6 +64,7 @@ export default function Main() {
         if (!timeSlotsForDate.hasOwnProperty(newDate)) {
             
             try {
+                // eslint-disable-next-line no-undef
                 availableTimes = fetchAPI(date);
             } catch (err) {
                 console.log(err);
@@ -80,7 +82,7 @@ export default function Main() {
         else {
             availableTimes = timeSlotsForDate[newDate];
         }
-        var options = availableTimes.map(availableTime => { return <option key={availableTime}>{availableTime}</option> });
+        var options = availableTimes.map(availableTime => { return <option data-testid="time-option" key={availableTime}>{availableTime}</option> });
         return options;
     }
 
@@ -99,10 +101,26 @@ export default function Main() {
             <Routes>
                 <Route path="/" element={<HomePage />}></Route>
                 <Route path="/booking-confirmed" element={<ConfirmedBooking formData={formData} />}></Route>
-                <Route path="/booking" element={<BookingPage formData={formData} setFormData={setFormData} submitForm={submitForm} availableTimeState={availableTimeState} availableTimeDispatch={availableTimeDispatch} />}></Route>
+                <Route path="/booking" element={<BookingPage 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    submitForm={submitForm} 
+                    availableTimeState={availableTimeState} 
+                    availableTimeDispatch={availableTimeDispatch} />}></Route>
+                    <Route path="/construction" element={<UnderConstruction />}></Route>
             </Routes>
         </main>
     );
 }
 
 
+function UnderConstruction() {
+    return (
+    <>
+    <div className="underConstruction">
+        <h2>Coming Soon !</h2>
+
+    </div>
+    </>
+);
+}
